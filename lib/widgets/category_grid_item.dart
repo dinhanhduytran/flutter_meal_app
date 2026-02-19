@@ -21,7 +21,7 @@ class CategoryGridItem extends StatelessWidget {
           gradient: LinearGradient(
             colors: [
               category.color,
-              category.color.withValues(alpha: 0.9),
+              category.color.withValues(alpha: 0.3),
             ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
