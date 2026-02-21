@@ -14,6 +14,9 @@ class MealDetailScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final favoriteMeals = ref.watch(favoriteMealsProvider);
+    final isFavorite = favoriteMeals.contains(meal);
+
     void showInfoMessage(String message) {
       if (Platform.isIOS) {
         Fluttertoast.cancel();
@@ -32,9 +35,6 @@ class MealDetailScreen extends ConsumerWidget {
       }
     }
 
-    final isMealFavorite =
-        ref.watch(favoriteMealsProvider).any((m) => m.id == meal.id);
-
     return Scaffold(
         appBar: AppBar(
           title: Text(meal.title),
@@ -49,7 +49,7 @@ class MealDetailScreen extends ConsumerWidget {
                     : "Meal is no longer a favorite.");
               },
               icon: Icon(
-                isMealFavorite ? Icons.star : Icons.star_border_outlined,
+                isFavorite ? Icons.star : Icons.star_border_outlined,
               ),
             )
           ],
